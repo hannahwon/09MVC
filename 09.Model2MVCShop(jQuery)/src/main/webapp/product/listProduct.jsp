@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
@@ -11,17 +11,14 @@
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
 <!-- CDN(Content Delivery Network) 호스트 사용 -->
+
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
 	let menu = "<c:out value='${menu}'/>";
 	//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScrpt 이용  
 	function fncGetList(currentPage) {
-
-		//document.getElementById("currentPage").value = currentPage;
-		//document.detailForm.submit();
 		$("#currentPage").val(currentPage)
-		$("form").attr("method", "POST").attr("action", "/product/listProduct")
-				.submit();
+		$("form").attr("method", "POST").attr("action", "/product/listProduct").submit();
 	}
 
 	$(function() {
@@ -29,13 +26,11 @@
 			fncGetList(1);
 		});
 
-		$(".ct_list_pop td:nth-child(3)").on(
-				"click",
-				function() {
+		$(".ct_list_pop td:nth-child(3)").on("click", function() {
 					//alert(menu);
 					let prodNo = $(this).find('input').val();
-					location.href = "/product/getProduct?prodNo=" + prodNo
-							+ "&menu=" + menu;
+					
+					location.href = "/product/getProduct?prodNo="+prodNo+"&menu="+menu;
 
 				});
 
@@ -55,6 +50,7 @@
 
 		<!--  <form name="detailForm" action="/product/listProduct?menu=${param.menu}" method="post">-->
 		<form name="detailForm">
+		<input type="hidden" name="menu" value="${menu}"/>
 
 			<table width="100%" height="37" border="0" cellpadding="0"
 				cellspacing="0">
@@ -96,8 +92,7 @@
 								${ ! empty search.searchCondition && search.searchCondition=='2' ? "selected" : "" }>상품가격</option>
 
 					</select> <input type="text" name="searchKeyword"
-						value="${! empty search.searchKeyword ? search.searchKeyword : "
-						"}" 
+						value="${! empty search.searchKeyword ? search.searchKeyword : ""}" 
 							class="ct_input_g" style="width: 200px; height: 19px">
 					</td>
 					<td align="right" width="70">
@@ -167,14 +162,16 @@
 
 
 			<!-- PageNavigation Start... -->
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td align="center"><input type="hidden" id="currentPage"
-						name="currentPage" value="1" /> <jsp:include
-							page="../common/pageNavigator.jsp" /></td>
-				</tr>
-			</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top:10px;">
+	<tr>
+		<td align="center">
+		   <input type="hidden" id="currentPage" name="currentPage" value=""/>
+	
+			<jsp:include page="../common/pageNavigator.jsp"/>	
+			
+    	</td>
+	</tr>
+</table>
 			<!--  페이지 Navigator 끝 -->
 
 		</form>

@@ -42,6 +42,32 @@
 				//alert(  $( ".Depth03:contains('회원정보조회')" ) );
 		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/user/listUser");
 			}); 
+			
+		 	$( ".Depth03:contains('판매상품등록')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( ".Depth03:contains('판매상품등록')" ) );
+		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/product/addProduct");
+			}); 
+		 	
+		 	$( ".Depth03:contains('판매상품관리')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( ".Depth03:contains('판매상품관리')" ) );
+		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/product/listProduct?menu=manage");
+			});
+		 	
+		 	$( ".Depth03:contains('상 품 검 색')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( ".Depth03:contains('상 품 검 색')" ) );
+		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/product/listProduct?menu=search");
+			});
+		 	
+		 	$( ".Depth03:contains('구매이력조회')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( ".Depth03:contains('구매이력조회')" ) );
+		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/purchase/listPurchase");
+			});
+		 	
+		 	
 		});	
 		 
 	</script>
@@ -93,12 +119,12 @@
 			<table  border="0" cellspacing="0" cellpadding="0" width="159">
 				<tr>
 					<td class="Depth03">
-						<a href="/product/addProduct" target="rightFrame">판매상품등록</a>
+						<!--  <a href="/product/addProduct" target="rightFrame"></a>-->판매상품등록
 					</td>
 				</tr>
 				<tr>
 					<td class="Depth03">
-						<a href="/product/listProduct?menu=manage"  target="rightFrame">판매상품관리</a>
+						<!--  <a href="/product/listProduct?menu=manage"  target="rightFrame"></a>-->판매상품관리
 					</td>
 				</tr>
 				<tr>
@@ -115,14 +141,14 @@
 		<table  border="0" cellspacing="0" cellpadding="0" width="159">
 			<tr>
 				<td class="Depth03">
-					<a href="/product/listProduct?menu=search" target="rightFrame">상 품 검 색</a>
+					<!--  <a href="/product/listProduct?menu=search" target="rightFrame">-->상 품 검 색</a>
 				</td>
 			</tr>
 			
 			<c:if test="${ !empty user && user.role == 'user'}">
 			<tr>
 				<td class="Depth03">
-					<a href="/listPurchase.do"  target="rightFrame">구매이력조회</a>
+					<!--  <a href="/purchase/listPurchase"  target="rightFrame">-->구매이력조회</a>
 				</td>
 			</tr>
 			</c:if>

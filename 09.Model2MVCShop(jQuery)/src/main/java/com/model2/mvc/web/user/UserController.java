@@ -23,7 +23,7 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
@@ -32,7 +32,7 @@ public class UserController {
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
 	public UserController(){
 		System.out.println(this.getClass());
@@ -69,7 +69,7 @@ public class UserController {
 		System.out.println("/user/getUser : GET");
 		//Business Logic
 		User user = userService.getUser(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("user", user);
 		
 		return "forward:/user/getUser.jsp";
@@ -83,7 +83,7 @@ public class UserController {
 		System.out.println("/getJsonUser/getUser : GET");
 		//Business Logic
 		User user = userService.getUser(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("user", user);
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ public class UserController {
 		System.out.println("/user/updateUser : GET");
 		//Business Logic
 		User user = userService.getUser(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("user", user);
 		
 		return "forward:/user/updateUser.jsp";
@@ -176,7 +176,7 @@ public class UserController {
 		System.out.println("/user/checkDuplication : POST");
 		//Business Logic
 		boolean result=userService.checkDuplication(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("result", new Boolean(result));
 		model.addAttribute("userId", userId);
 
@@ -194,13 +194,13 @@ public class UserController {
 		}
 		search.setPageSize(pageSize);
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map=userService.getUserList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println(resultPage);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
